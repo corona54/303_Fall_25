@@ -10,8 +10,26 @@ def main():
         print("Invalid choice. Please choose 'encode' or 'decode'.")
 
 def encode():
+    message = input("Enter the message you want to encode: ").lower()
+    shift = int(input("Enter your shift number: "))
+    alphabet = [chr(i) for i in range(ord('a'), ord('z')+1)]
+    encoded_message = ""
+
+    for ch in message:
+        shifted = chr(((ord(ch) - ord('a') + shift) % 26) + ord('a'))
+        encoded_message += shifted
+    print(alphabet, encoded_message)
 
 def decode():
+    message = input("Enter the message you want to decode: ").lower()
+    shift = int(input("Enter your shift number: "))
+    alphabet = [chr(i) for i in range(ord('a'), ord('z')+1)]
+    decoded_message = ""
+
+    for ch in message:
+        shifted = chr(((ord(ch) - ord('a') - shift) % 26) + ord('a'))
+        decoded_message += shifted
+    print(alphabet, decoded_message)
 
 if __name__ == "__main__":
     main()
