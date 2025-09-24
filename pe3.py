@@ -3,9 +3,11 @@ def main():
     choice = input("Would you like to encode or decode a message? ").lower()
 
     if choice == "encode":
-        encode()
+        result = encode()
+        print(result)
     elif choice == "decode":
-        decode()
+        result = decode()
+        print(result)
     else:
         print("Invalid choice. Please choose 'encode' or 'decode'.")
 
@@ -16,9 +18,10 @@ def encode():
     encoded_message = ""
 
     for ch in message:
-        shifted = chr(((ord(ch) - ord('a') + shift) % 26) + ord('a'))
-        encoded_message += shifted
-    print(alphabet, encoded_message)
+        if ch.isalpha():
+            shifted = chr(((ord(ch) - ord('a') + shift) % 26) + ord('a'))
+            encoded_message += shifted
+    return(alphabet, encoded_message)
 
 def decode():
     message = input("Enter the message you want to decode: ").lower()
@@ -29,7 +32,7 @@ def decode():
     for ch in message:
         shifted = chr(((ord(ch) - ord('a') - shift) % 26) + ord('a'))
         decoded_message += shifted
-    print(alphabet, decoded_message)
+    return(decoded_message)
 
 if __name__ == "__main__":
     main()
