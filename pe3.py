@@ -1,23 +1,10 @@
 import datetime
 import string
-def main():
-    print("Welcome to the Ceasar Cipher")
-    choice = input("Would you like to encode or decode a message? ").lower()
 
-    if choice == "encode":
-        result = encode()
-        print("Encoded Message: ", result)
-    elif choice == "decode":
-        result = decode()
-        print("Decoded Message: ",result)
-    else:
-        print("Invalid choice. Please choose 'encode' or 'decode'.")
-
-def encode(input_text: str, shift: int):
-    #input_text = input("Enter the message you want to encode: ").lower() # Get user input and convert to lowercase
-    #shift = int(input("Enter your shift number: ")) # Get the shift number from the user
-    #alphabet = [chr(i) for i in range(ord('a'), ord('z')+1)] # Create a list of the alphabet
-    alphabet = list(string.ascii_lowercase)
+def encode():
+    input_text = input("Enter the message you want to encode: ").lower() # Get user input and convert to lowercase
+    shift = int(input("Enter your shift number: ")) # Get the shift number from the user
+    alphabet = list(string.ascii_lowercase) # Create a list of the alphabet
     encoded_message = "" # initialize empty variable for the encoded message
 
     for ch in input_text.lower():
@@ -25,13 +12,12 @@ def encode(input_text: str, shift: int):
             shifted = chr(((ord(ch) - ord('a') + shift) % 26) + ord('a')) # Shift each character by the shift number
             encoded_message += shifted # append the shifted character to encoded message variable
         else:
-            encoded_message += ch #keeps spaces/punctuation
+             encoded_message += ch #keeps spaces/punctuation
     return(alphabet, encoded_message) # Return the alphabet and the encoded message
 
-def decode(input_text: str, shift: int):
-    #input_text = input("Enter the message you want to decode: ").lower() # Get user input and convert to lowercase
-    #shift = int(input("Enter your shift number: ")) # Get the shift number from the user
-    #alphabet = [chr(i) for i in range(ord('a'), ord('z')+1)] # Create a list of the alphabet
+def decode():
+    input_text = input("Enter the message you want to decode: ").lower() # Get user input and convert to lowercase
+    shift = int(input("Enter your shift number: ")) # Get the shift number from the user
     decoded_message = "" # initialize empty variable for the decoded message
 
     for ch in input_text.lower():
@@ -105,9 +91,4 @@ class CheckingAccount(BankAccount):
             self.balance -= 30
             print("Overdraft! a $30 fee has been applied")
             
-        print(f"New Balance: {self.balance}")    
-            
-            
-# Run the main function
-if __name__ == "__main__":
-    main()
+        print(f"New Balance: {self.balance}")
