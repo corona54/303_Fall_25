@@ -1,9 +1,7 @@
 import datetime
 import string
 
-def encode():
-    input_text = input("Enter the message you want to encode: ").lower() # Get user input and convert to lowercase
-    shift = int(input("Enter your shift number: ")) # Get the shift number from the user
+def encode(input_text: str, shift: int):
     alphabet = list(string.ascii_lowercase) # Create a list of the alphabet
     encoded_message = "" # initialize empty variable for the encoded message
 
@@ -15,13 +13,11 @@ def encode():
              encoded_message += ch #keeps spaces/punctuation
     return(alphabet, encoded_message) # Return the alphabet and the encoded message
 
-def decode():
-    input_text = input("Enter the message you want to decode: ").lower() # Get user input and convert to lowercase
-    shift = int(input("Enter your shift number: ")) # Get the shift number from the user
+def decode(input_text: str, shift: int):
     decoded_message = "" # initialize empty variable for the decoded message
 
     for ch in input_text.lower():
-        if ch.isalpha():
+        if ch.isalpha(): # Check if character is a letter and skip if not
             shifted = chr(((ord(ch) - ord('a') - shift) % 26) + ord('a')) # Shift each character back by the shift number
             decoded_message += shifted # append the shifted character to decoded message variable
         else:
